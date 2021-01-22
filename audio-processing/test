@@ -1,0 +1,8 @@
+# Ignore filename
+filename.txt
+
+hello
+world
+multiline
+# Ignore file
+filename.txt
