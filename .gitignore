@@ -5,6 +5,10 @@
 media/
 data/
 
+### Backups ##
+backupfile*.py
+testfile*.py
+
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
