@@ -1,9 +1,21 @@
 
+from keras.layers import Input, Dense, Reshape, Flatten, Dropout, multiply
+from keras.models import Sequential
+from keras.layers import Dense, Activation, Reshape
+from keras.layers.normalization import BatchNormalization
+from keras.layers.convolutional import UpSampling2D, Conv2D, MaxPooling2D
+from keras.layers.advanced_activations import LeakyReLU, ELU
+from keras.optimizers import Adam
+from keras.layers import Flatten, Dropout
 
-def generator_model_A():
+import numpy as np
+
+
+def generator_model_A(input_dimension, channels):
+
     model = Sequential()
 
-    model.add(Dense(16 * 45 * 45, activation="relu", input_dim=self.latent_dim))
+    model.add(Dense(16 * 45 * 45, activation="relu", input_dim=input_dimension))
     model.add(Reshape((45, 45, 16)))
     model.add(UpSampling2D())
     model.add(Conv2D(16, kernel_size=3, padding="same"))
@@ -25,15 +37,16 @@ def generator_model_A():
     model.add(BatchNormalization(momentum=0.8))
     # model.add(Activation("relu"))
     model.add(LeakyReLU(alpha=0.2))
-    model.add(Conv2D(self.channels, kernel_size=3, padding="same"))
+    model.add(Conv2D(channels, kernel_size=3, padding="same"))
     model.add(Activation("tanh"))
     return model
 
-def discriminator(self):
+
+def discriminator_model_A(input_shape):
 
     model = Sequential()
-
-    model.add(Conv2D(16,kernel_size=3, strides=2, input_shape=self.img_shape, padding="same"))
+    # model.add(Dense(512, input_dim=np.prod(input_shape)))
+    model.add(Conv2D(16, (3,3), input_shape=input_shape[:], padding="same"))
     model.add(LeakyReLU(alpha=0.2))
     model.add(Dropout(0.25))
     model.add(Conv2D(32, kernel_size=3, strides=2, padding="same"))

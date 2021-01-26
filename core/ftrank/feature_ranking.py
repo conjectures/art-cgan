@@ -1,5 +1,5 @@
 """
-    Functions used to transform features into 'ranking'
+    Functions used to transform features into class
 """
 import numpy as np
 
@@ -21,6 +21,12 @@ def rank_features(features):
     return rank
 
 
-def weight_function(*, loudness, peak_num, mean, mean_trend, peaks_trend):
+def weight_function(*, loudness, peak_num, means, means_trend, peaks_trend):
     """ Combine features with simple weighted addition """
-    return 0.333*(peak_num + mean - loudness) + mean_trend + peaks_trend
+    return 0.333*(peak_num + means - loudness) + means_trend + peaks_trend
+
+
+def classify_rank(rank):
+    """ Get rank and return class (int) - TODO fix for more classes """
+    return np.where(rank>0, 1, 0)
+

@@ -4,6 +4,7 @@
 ### DATA ###
 media/
 data/
+results/
 
 ### Backups ##
 backupfile*.py

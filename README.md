@@ -22,7 +22,6 @@ The ranking (currently) is a single digit as the CGAN is trained for only two 'e
 ## CGAN
 
 ## Note
-- pip package ``simpleaudio`` requires linux package ``libasound2-dev``, [see here](https://github.com/pioneers/PieCentral/issues/710)
 
 ## TODO
 - pywt instead of essentia
